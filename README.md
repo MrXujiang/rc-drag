@@ -29,6 +29,7 @@ yarn add @xlab/rc-drag
 |  ---   |  ---  |  ---  |  ---  |
 |  container  |  画布元素或者画布id (Canvas element or canvas id) |  HTMLElement | string  | document.body |
 |  pos  |  画布初始化坐标 (The canvas initializes the coordinates)  |  [x:number, y:number]  |  [0, 0]  |
+|  size  |  拖拽组件大小 (Drag component size)  |  [w:number, h:number]  |  [100, 100]  |
 |  isStatic  |  是否禁止拖拽(Whether drag is prohibited)  | boolean |  false  |
 |  zIndex  |  拖拽元素的层级 (Drag the level of the element)  |  number  |  1  |
 |  close  |  todo  |  -  |  -  |
