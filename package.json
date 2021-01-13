@@ -1,0 +1,79 @@
+{
+  "name": "@alex_xu/rc-drag",
+  "version": "1.0.4",
+  "description": "An React Component for drag and resize",
+  "keywords": [
+    "drag-and-drop",
+    "component",
+    "drag",
+    "resize",
+    "react",
+    "dragable",
+    "javascript",
+    "ui"
+  ],
+  "homepage": "https://github.com/MrXujiang/rc-drag",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MrXujiang/rc-drag/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:MrXujiang/rc-drag.git"
+  },
+  "contributors": [
+    "alex_xu"
+  ],
+  "scripts": {
+    "dev": "npx --max_old_space_size=8096 father doc dev --host 0.0.0.0",
+    "build": "father build",
+    "build:doc": "father doc build",
+    "deploy": "father doc deploy"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/events": "^3.0.0",
+    "@types/node": "^14.6.2",
+    "@typescript-eslint/eslint-plugin": "4.1.1",
+    "@typescript-eslint/parser": "4.1.1",
+    "babel-eslint": "10.x",
+    "eslint": "6.x",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-flowtype": "4.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "2.x",
+    "father": "^2.30.1",
+    "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "@babel/runtime": "^7.7.1",
+    "babel-plugin-import": "^1.13.3",
+    "keymaster": "^1.6.2",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "yorkie": "^2.0.0"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "browserslist": [
+    "last 2 version",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 9"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com"
+  }
+}

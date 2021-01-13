@@ -1,0 +1,170 @@
+{
+  "config": {
+    "title": "rc-drag",
+    "description": "An React Component for drag and resize",
+    "menu": [],
+    "version": "1.0.3",
+    "repository": false,
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {
+      "mode": "light"
+    },
+    "separator": "-",
+    "typescript": true,
+    "theme": "/Users/apple/Documents/zm/rc-drag/node_modules/docz-theme-umi/es/index.js",
+    "base": "/",
+    "plugins": [
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "props": [
+    {
+      "key": "src/components/index.tsx",
+      "value": [
+        {
+          "description": "自由拖拽组件",
+          "displayName": "Drag",
+          "methods": [],
+          "props": {
+            "container": {
+              "defaultValue": null,
+              "description": "",
+              "name": "container",
+              "parent": {
+                "fileName": "src/components/index.tsx",
+                "name": "IProps"
+              },
+              "required": true,
+              "type": {
+                "name": "string | HTMLElement"
+              }
+            },
+            "isStatic": {
+              "defaultValue": null,
+              "description": "",
+              "name": "isStatic",
+              "parent": {
+                "fileName": "src/components/index.tsx",
+                "name": "IProps"
+              },
+              "required": true,
+              "type": {
+                "name": "boolean"
+              }
+            },
+            "pos": {
+              "defaultValue": null,
+              "description": "",
+              "name": "pos",
+              "parent": {
+                "fileName": "src/components/index.tsx",
+                "name": "IProps"
+              },
+              "required": true,
+              "type": {
+                "name": "[number, number]"
+              }
+            },
+            "size": {
+              "defaultValue": null,
+              "description": "",
+              "name": "size",
+              "parent": {
+                "fileName": "src/components/index.tsx",
+                "name": "IProps"
+              },
+              "required": true,
+              "type": {
+                "name": "[number, number]"
+              }
+            },
+            "zIndex": {
+              "defaultValue": null,
+              "description": "",
+              "name": "zIndex",
+              "parent": {
+                "fileName": "src/components/index.tsx",
+                "name": "IProps"
+              },
+              "required": true,
+              "type": {
+                "name": "number"
+              }
+            },
+            "close": {
+              "defaultValue": null,
+              "description": "",
+              "name": "close",
+              "parent": {
+                "fileName": "src/components/index.tsx",
+                "name": "IProps"
+              },
+              "required": true,
+              "type": {
+                "name": "boolean"
+              }
+            },
+            "onClose": {
+              "defaultValue": null,
+              "description": "",
+              "name": "onClose",
+              "parent": {
+                "fileName": "src/components/index.tsx",
+                "name": "IProps"
+              },
+              "required": true,
+              "type": {
+                "name": "() => void"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "key": "src/components/index.mdx",
+      "value": {
+        "name": "Drag",
+        "route": "/Drag",
+        "order": 5,
+        "sidebar": true,
+        "id": "8f6609a989594e49bce5582173f1be02",
+        "filepath": "src/components/index.mdx",
+        "link": "https://github.com/MrXujiang/rc-drag/edit/master/src/components/index.mdx",
+        "slug": "src-components-index",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "rc-drag",
+            "depth": 1,
+            "value": "rc-drag"
+          },
+          {
+            "slug": "默认",
+            "depth": 4,
+            "value": "默认"
+          },
+          {
+            "slug": "用法",
+            "depth": 2,
+            "value": "用法"
+          },
+          {
+            "slug": "api文档",
+            "depth": 2,
+            "value": "API文档"
+          }
+        ]
+      }
+    }
+  ]
+}

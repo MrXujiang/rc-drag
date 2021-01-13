@@ -1,0 +1,86 @@
+.drag-item-wrap .x-drag-item {
+  cursor: move;
+  background-color: #ccc;
+  position: absolute;
+  box-sizing: border-box;
+  word-break: break-all;
+}
+.drag-item-wrap .control-point {
+  position: absolute;
+  box-sizing: border-box;
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #c0c5cf;
+  box-shadow: 0 0 1px 0 rgba(86, 90, 98, 0.1);
+  border-radius: 2px;
+  padding: 4px;
+  margin-top: -4px !important;
+  margin-left: -4px !important;
+  user-select: none;
+}
+.drag-item-wrap .control-point.point-e {
+  cursor: ew-resize;
+  left: 100%;
+  top: 50%;
+  margin-left: 1px;
+}
+.drag-item-wrap .control-point.point-n {
+  cursor: ns-resize;
+  left: 50%;
+  top: 0;
+  margin-top: -1px;
+}
+.drag-item-wrap .control-point.point-s {
+  cursor: ns-resize;
+  left: 50%;
+  top: 100%;
+  margin-top: 1px;
+}
+.drag-item-wrap .control-point.point-w {
+  cursor: ew-resize;
+  top: 50%;
+  left: 0;
+  margin-left: -1px;
+}
+.drag-item-wrap .control-point.point-ne {
+  cursor: nesw-resize;
+  left: 100%;
+  top: 0;
+  margin-top: -1px;
+  margin-left: 1px;
+}
+.drag-item-wrap .control-point.point-nw {
+  top: 0;
+  left: 0;
+  cursor: nwse-resize;
+  margin-left: -1px;
+  margin-top: -1px;
+}
+.drag-item-wrap .control-point.point-se {
+  cursor: nwse-resize;
+  left: 100%;
+  top: 100%;
+  margin-left: 1px;
+  margin-top: 1px;
+}
+.drag-item-wrap .control-point.point-sw {
+  cursor: nesw-resize;
+  top: 100%;
+  left: 0;
+  margin-left: -1px;
+  margin-top: 1px;
+}
+.drag-item-wrap .control-point.control-rotator {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 130%;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg' fill='%23757575'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Ccircle stroke='%23CCD1DA' fill='%23FFF' cx='12' cy='12' r='11.5'/%3E%3Cpath d='M16.242 12.012a4.25 4.25 0 00-5.944-4.158L9.696 6.48a5.75 5.75 0 018.048 5.532h1.263l-2.01 3.002-2.008-3.002h1.253zm-8.484-.004a4.25 4.25 0 005.943 3.638l.6 1.375a5.75 5.75 0 01-8.046-5.013H5.023L7.02 9.004l1.997 3.004h-1.26z' fill='%23000' fill-rule='nonzero'/%3E%3C/g%3E%3C/svg%3E");
+  width: 22px;
+  height: 22px;
+  background-size: 100% 100%;
+  z-index: 4;
+  box-shadow: none;
+  border: none;
+  transform: translateX(-3px);
+}
