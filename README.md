@@ -20,11 +20,11 @@ rc-drag is a react-based drag-and-zoom component library that provides a flexibl
 ## Installation
 
 ``` bash
-npm i @xlab/rc-drag
+npm i @alex_xu/rc-drag
 ```
 or
 ``` bash
-yarn add @xlab/rc-drag
+yarn add @alex_xu/rc-drag
 ```
 
 ## API
@@ -45,7 +45,7 @@ yarn add @xlab/rc-drag
 
 ``` js
 // 导入
-import { Drag } from '@xlab/rc-drag'
+import { Drag } from '@alex_xu/rc-drag'
 
 <div id="box">
     <Drag container="#box">123</Drag>
