@@ -77,6 +77,9 @@ function Drag(props:IProps) {
   const onMouseDown = (dir:PosMap, e:React.MouseEvent<HTMLElement>) => {
     // stop the event bubbles
     e.stopPropagation();
+    // set layer level
+    // setStyle(prev => ({...prev, zIndex: 9999}))
+
     // save direction
     direction.current = dir;
     isDown.current = true;

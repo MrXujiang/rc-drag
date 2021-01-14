@@ -3,7 +3,7 @@
     "title": "rc-drag",
     "description": "An React Component for drag and resize",
     "menu": [],
-    "version": "1.0.6",
+    "version": "1.0.7",
     "repository": false,
     "native": false,
     "codeSandbox": true,
