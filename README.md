@@ -8,6 +8,7 @@ rc-drag is a react-based drag-and-zoom component library that provides a flexibl
 - [Installation](#installation)
 - [API](#api)
 - [Usage](#usage)
+- [Partner project](#partner-project)
 - [Contribute](#contribute)
 - [TODO List](#todo-list)
 
@@ -57,6 +58,10 @@ import { Drag } from '@xlab/rc-drag'
 </div>
 
 ```
+
+## Partner project
+
+- [h5-dooring](https://github.com/MrXujiang/h5-Dooring)
 
 ## Contribute
 
