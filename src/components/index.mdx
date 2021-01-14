@@ -7,7 +7,6 @@ sidebar: true
 
 import { Playground } from 'docz'
 import Drag from './index'
-import Img from '../assets/01.png'
 
 # rc-drag
 #### 默认
@@ -17,7 +16,6 @@ import Img from '../assets/01.png'
       <Drag container="#box" size={[200, 200]} zIndex={2} onDragStart={(item) => console.log('start', item)} onDragStop={(item) => console.log('stop', item)}><p>Mr xu</p></Drag>
       <Drag container="#box" isStatic={true}><p>static item</p></Drag>
       <Drag container="#box"><p>dragable dooring</p></Drag>
-      <Drag container="#box"><img src={Img} /></Drag>
     </div>
 </Playground>
 
