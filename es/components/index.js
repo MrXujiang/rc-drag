@@ -199,7 +199,9 @@ function Drag(props) {
     },
     onMouseUp: onMouseUp,
     onMouseMove: onMouseMove
-  }, children, !isStatic && points.map(function (item) {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "x-drag-item-child"
+  }, children), !isStatic && points.map(function (item) {
     return /*#__PURE__*/React.createElement("div", {
       className: classnames('control-point', "point-".concat(item)),
       key: item,

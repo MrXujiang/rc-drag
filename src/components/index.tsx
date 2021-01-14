@@ -197,7 +197,7 @@ function Drag(props:IProps) {
       isStatic ? <div className="x-drag-item" style={style}>{ children }</div>
         :
         <div className="x-drag-item" style={style} onMouseDown={(e) => onMouseDown('move', e)} onMouseUp={onMouseUp} onMouseMove={onMouseMove}>
-          { children }
+          <div className="x-drag-item-child">{ children }</div>
           {
             !isStatic && points.map(item => <div className={classnames('control-point', `point-${item}`)} key={item} onMouseDown={(e:React.MouseEvent<HTMLElement>) => onMouseDown(item as PosMap, e)}></div>)
           }
