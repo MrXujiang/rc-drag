@@ -32,6 +32,8 @@ yarn add @xlab/rc-drag
 |  size  |  拖拽组件大小 (Drag component size)  |  [w:number, h:number]  |  [100, 100]  |
 |  isStatic  |  是否禁止拖拽(Whether drag is prohibited)  | boolean |  false  |
 |  zIndex  |  拖拽元素的层级 (Drag the level of the element)  |  number  |  1  |
+|  onDragStart | 鼠标拖拽开始 (The drag and drop begins) | fn | (item) => void
+|  onDragStop | 鼠标拖拽结束 (The drag ends) | fn | (item) => void
 |  close  |  todo  |  -  |  -  |
 |  onClose  |  todo  |  -  |   - |
 

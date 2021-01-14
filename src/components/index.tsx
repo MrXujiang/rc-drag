@@ -15,6 +15,8 @@ export interface IProps {
   size: [number, number];
   zIndex: number;
   children: ReactNode;
+  onDragStart: (params) => void;
+  onDragStop: (params) => void;
 }
 
 interface OriPos {
@@ -35,8 +37,8 @@ type PosMap = 'e' | 'w' | 's' | 'n' | 'ne' | 'nw' | 'se' | 'sw' | 'move' | 'rota
  * @param {size} 元素宽高
  * @param {isStatic} 是否禁止拖拽
  * @param {zIndex} 层级
- * @param {close} 自定义关闭按钮
- * @param {onClose} 关闭时触发的事件
+ * @param {onDragStart} 鼠标拖拽开始
+ * @param {onDragStop} 鼠标拖拽结束
  */
 function Drag(props:IProps) {
   const {
@@ -46,6 +48,8 @@ function Drag(props:IProps) {
     zIndex = 1,
     isStatic = false,
     children,
+    onDragStart,
+    onDragStop
   } = props
 
   const [style, setStyle] = useState({
@@ -83,6 +87,7 @@ function Drag(props:IProps) {
       ...style,
       cX, cY
     }
+    onDragStart && onDragStart(oriPos.current)
   }
 
   // move mouse
@@ -96,7 +101,8 @@ function Drag(props:IProps) {
   // The mouse is lifted
   const onMouseUp = useCallback((e) => {
     isDown.current = false;
-  }, [])
+    onDragStop && onDragStop(style)
+  }, [style])
 
   const getTanDeg = (tan:number) => {
     var result = Math.atan(tan) / (Math.PI / 180);
