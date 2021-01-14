@@ -12,7 +12,8 @@ rc-drag is a react-based drag-and-zoom component library that provides a flexibl
 - [TODO List](#todo-list)
 
 ## Demos
-<img src="./01.png" />
+<img src="./01.png" width="360px" />
+<img src="./02.png" width="360px" />
 
 ## Installation
 

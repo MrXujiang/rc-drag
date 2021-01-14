@@ -3,7 +3,7 @@
     "title": "rc-drag",
     "description": "An React Component for drag and resize",
     "menu": [],
-    "version": "1.0.3",
+    "version": "1.0.5",
     "repository": false,
     "native": false,
     "codeSandbox": true,
@@ -98,30 +98,30 @@
                 "name": "number"
               }
             },
-            "close": {
+            "onDragStart": {
               "defaultValue": null,
               "description": "",
-              "name": "close",
+              "name": "onDragStart",
               "parent": {
                 "fileName": "src/components/index.tsx",
                 "name": "IProps"
               },
               "required": true,
               "type": {
-                "name": "boolean"
+                "name": "(params: any) => void"
               }
             },
-            "onClose": {
+            "onDragStop": {
               "defaultValue": null,
               "description": "",
-              "name": "onClose",
+              "name": "onDragStop",
               "parent": {
                 "fileName": "src/components/index.tsx",
                 "name": "IProps"
               },
               "required": true,
               "type": {
-                "name": "() => void"
+                "name": "(params: any) => void"
               }
             }
           }

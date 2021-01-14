@@ -190,18 +190,13 @@ function Drag(props:IProps) {
     if(['relative', 'absolute', 'fixed'].indexOf(dragBox.current.style.position) < 0) {
       dragBox.current.style.position = 'relative';
     }
-    dragBox.current.addEventListener('mouseup', onMouseUp, false)
-    dragBox.current.addEventListener('mousemove', onMouseMove, false)
-    return () => {
-      // remove listener
-    }
   }, [])
   
   return <div className="drag-item-wrap">
     {
       isStatic ? <div className="x-drag-item" style={style}>{ children }</div>
         :
-        <div className="x-drag-item" style={style} onMouseDown={(e) => onMouseDown('move', e)}>
+        <div className="x-drag-item" style={style} onMouseDown={(e) => onMouseDown('move', e)} onMouseUp={onMouseUp} onMouseMove={onMouseMove}>
           { children }
           {
             !isStatic && points.map(item => <div className={classnames('control-point', `point-${item}`)} key={item} onMouseDown={(e:React.MouseEvent<HTMLElement>) => onMouseDown(item as PosMap, e)}></div>)

@@ -7,15 +7,15 @@
 }
 .drag-item-wrap .control-point {
   position: absolute;
-  box-sizing: border-box;
+  box-sizing: content-box;
   display: inline-block;
-  background: #fff;
-  border: 1px solid #c0c5cf;
-  box-shadow: 0 0 1px 0 rgba(86, 90, 98, 0.1);
-  border-radius: 2px;
-  padding: 4px;
-  margin-top: -4px !important;
-  margin-left: -4px !important;
+  width: 6px;
+  height: 6px;
+  background: #06c;
+  background-clip: content-box;
+  padding: 8px;
+  margin-top: -11px !important;
+  margin-left: -11px !important;
   user-select: none;
 }
 .drag-item-wrap .control-point.point-e {

@@ -16,8 +16,8 @@ import "./index.css";
  * @param {size} 元素宽高
  * @param {isStatic} 是否禁止拖拽
  * @param {zIndex} 层级
- * @param {close} 自定义关闭按钮
- * @param {onClose} 关闭时触发的事件
+ * @param {onDragStart} 鼠标拖拽开始
+ * @param {onDragStop} 鼠标拖拽结束
  */
 
 function Drag(props) {
@@ -31,7 +31,9 @@ function Drag(props) {
       zIndex = _props$zIndex === void 0 ? 1 : _props$zIndex,
       _props$isStatic = props.isStatic,
       isStatic = _props$isStatic === void 0 ? false : _props$isStatic,
-      children = props.children;
+      children = props.children,
+      onDragStart = props.onDragStart,
+      onDragStop = props.onDragStop;
 
   var _useState = useState({
     left: pos[0],
@@ -68,6 +70,7 @@ function Drag(props) {
       cX: cX,
       cY: cY
     });
+    onDragStart && onDragStart(oriPos.current);
   }; // move mouse
 
 
@@ -80,7 +83,8 @@ function Drag(props) {
 
   var onMouseUp = useCallback(function (e) {
     isDown.current = false;
-  }, []);
+    onDragStop && onDragStop(style);
+  }, [style]);
 
   var getTanDeg = function getTanDeg(tan) {
     var result = Math.atan(tan) / (Math.PI / 180);
@@ -181,11 +185,6 @@ function Drag(props) {
     if (['relative', 'absolute', 'fixed'].indexOf(dragBox.current.style.position) < 0) {
       dragBox.current.style.position = 'relative';
     }
-
-    dragBox.current.addEventListener('mouseup', onMouseUp, false);
-    dragBox.current.addEventListener('mousemove', onMouseMove, false);
-    return function () {// remove listener
-    };
   }, []);
   return /*#__PURE__*/React.createElement("div", {
     className: "drag-item-wrap"
@@ -197,7 +196,9 @@ function Drag(props) {
     style: style,
     onMouseDown: function onMouseDown(e) {
       return _onMouseDown('move', e);
-    }
+    },
+    onMouseUp: onMouseUp,
+    onMouseMove: onMouseMove
   }, children, !isStatic && points.map(function (item) {
     return /*#__PURE__*/React.createElement("div", {
       className: classnames('control-point', "point-".concat(item)),

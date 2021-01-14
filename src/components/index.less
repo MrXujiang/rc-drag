@@ -8,15 +8,15 @@
   }
   .control-point{
     position: absolute;
-    box-sizing: border-box;
+    box-sizing: content-box;
     display: inline-block;
-    background: #fff;
-    border: 1px solid #c0c5cf;
-    box-shadow: 0 0 1px 0 rgba(86, 90, 98, .1);
-    border-radius: 2px;
-    padding: 4px;
-    margin-top: -4px !important;
-    margin-left: -4px !important;
+    width: 6px;
+    height: 6px;
+    background: #06c;
+    background-clip: content-box;
+    padding: 8px;
+    margin-top: -11px !important;
+    margin-left: -11px !important;
     user-select: none;   // 注意禁止鼠标选中控制点元素，不然拖拽事件可能会因此被中断
   }
   .control-point.point-e{
