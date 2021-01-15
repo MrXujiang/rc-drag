@@ -73,13 +73,47 @@ function Drag(props) {
       cY: cY
     });
     onDragStart && onDragStart(oriPos.current);
-  }; // move mouse
+  };
 
+  var _onTouchStart = function onTouchStart(dir, e) {
+    // stop the event bubbles
+    e.stopPropagation(); // set layer level
+    // setStyle(prev => ({...prev, zIndex: 9999}))
+    // save direction
+
+    direction.current = dir;
+    isDown.current = true;
+    console.log(e.targetTouches[0]);
+    var cY = e.targetTouches[0].pageY;
+    var cX = e.targetTouches[0].pageX;
+    oriPos.current = Object.assign(Object.assign({}, style), {
+      cX: cX,
+      cY: cY
+    });
+    onDragStart && onDragStart(oriPos.current);
+  };
+
+  var onTouchMove = useCallback(function (e) {
+    // stop the event bubbles
+    e.stopPropagation(); // Determine if the mouse is holding down
+
+    if (!isDown.current) return;
+    var y = e.targetTouches[0].pageY;
+    var x = e.targetTouches[0].pageX;
+    var newStyle = transform(direction.current, oriPos.current, {
+      x: x,
+      y: y
+    });
+    setStyle(newStyle);
+  }, []); // move mouse
 
   var onMouseMove = useCallback(function (e) {
     // Determine if the mouse is holding down
     if (!isDown.current) return;
-    var newStyle = transform(direction.current, oriPos.current, e);
+    var newStyle = transform(direction.current, oriPos.current, {
+      x: e.clientX,
+      y: e.clientY
+    });
     setStyle(newStyle);
   }, []); // The mouse is lifted
 
@@ -94,12 +128,12 @@ function Drag(props) {
     return result;
   };
 
-  function transform(direction, oriPos, e) {
+  function transform(direction, oriPos, pos) {
     var _a, _b;
 
     var style = Object.assign({}, oriPos);
-    var offsetX = e.clientX - oriPos.cX;
-    var offsetY = e.clientY - oriPos.cY;
+    var offsetX = pos.x - oriPos.cX;
+    var offsetY = pos.y - oriPos.cY;
 
     switch (direction) {
       // move
@@ -171,8 +205,8 @@ function Drag(props) {
         var x = style.width / 2 + style.left;
         var y = style.height / 2 + style.top; // The current mouse coordinates
 
-        var x1 = e.clientX;
-        var y1 = e.clientY; // Using triangular functions, there are bugs to optimize
+        var x1 = pos.x;
+        var y1 = pos.y; // Using triangular functions, there are bugs to optimize
 
         style.transform = "rotate(".concat(getTanDeg((y1 - y) / (x1 - x)), "deg)");
         break;
@@ -200,7 +234,12 @@ function Drag(props) {
       return _onMouseDown('move', e);
     },
     onMouseUp: onMouseUp,
-    onMouseMove: onMouseMove
+    onMouseMove: onMouseMove,
+    onTouchStart: function onTouchStart(e) {
+      return _onTouchStart('move', e);
+    },
+    onTouchMove: onTouchMove,
+    onTouchEnd: onMouseUp
   }, /*#__PURE__*/React.createElement("div", {
     className: "x-drag-item-child"
   }, children), !isStatic && points.map(function (item) {
@@ -209,6 +248,9 @@ function Drag(props) {
       key: item,
       onMouseDown: function onMouseDown(e) {
         return _onMouseDown(item, e);
+      },
+      onTouchStart: function onTouchStart(e) {
+        return _onTouchStart(item, e);
       }
     });
   })));

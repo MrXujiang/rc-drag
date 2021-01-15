@@ -93,11 +93,43 @@ function Drag(props:IProps) {
     onDragStart && onDragStart(oriPos.current)
   }
 
+  const onTouchStart = (dir:PosMap, e:React.TouchEvent<HTMLElement>) => {
+    // stop the event bubbles
+    e.stopPropagation();
+    // set layer level
+    // setStyle(prev => ({...prev, zIndex: 9999}))
+
+    // save direction
+    direction.current = dir;
+    isDown.current = true;
+
+    const cY = e.targetTouches[0].pageY;
+    const cX = e.targetTouches[0].pageX;
+    oriPos.current = {
+      ...style,
+      cX, cY
+    }
+    onDragStart && onDragStart(oriPos.current)
+  }
+
+  const onTouchMove = useCallback((e:React.TouchEvent<HTMLElement>) => {
+    // stop the event bubbles
+    e.stopPropagation();
+
+    // Determine if the mouse is holding down
+    if (!isDown.current) return
+
+    const y = e.targetTouches[0].pageY;
+    const x = e.targetTouches[0].pageX;
+    let newStyle = transform(direction.current, oriPos.current, {x, y});
+    setStyle(newStyle as any)
+  }, [])
+
   // move mouse
   const onMouseMove = useCallback((e) => {
     // Determine if the mouse is holding down
     if (!isDown.current) return
-    let newStyle = transform(direction.current, oriPos.current, e);
+    let newStyle = transform(direction.current, oriPos.current, {x:e.clientX, y: e.clientY});
     setStyle(newStyle as any)
   }, [])
 
@@ -113,10 +145,10 @@ function Drag(props:IProps) {
     return result;
   }
 
-  function transform(direction: PosMap, oriPos:OriPos, e:React.MouseEvent<HTMLElement>) {
+  function transform(direction: PosMap, oriPos:OriPos, pos:{x:number, y: number}) {
     const style = {...oriPos}
-    const offsetX = e.clientX - oriPos.cX;
-    const offsetY = e.clientY - oriPos.cY;
+    const offsetX = pos.x - oriPos.cX;
+    const offsetY = pos.y - oriPos.cY;
 
     switch (direction) {
       // move
@@ -179,8 +211,8 @@ function Drag(props:IProps) {
         const x = style.width / 2 + style.left;
         const y = style.height / 2 + style.top;
         // The current mouse coordinates
-        const x1 = e.clientX;
-        const y1 = e.clientY;
+        const x1 = pos.x;
+        const y1 = pos.y;
         // Using triangular functions, there are bugs to optimize
         style.transform = `rotate(${getTanDeg((y1 - y) / (x1 - x))}deg)`;
         break
@@ -199,10 +231,29 @@ function Drag(props:IProps) {
     {
       isStatic ? <div className="x-drag-item" style={style}>{ children }</div>
         :
-        <div className="x-drag-item" style={style} onMouseDown={(e) => onMouseDown('move', e)} onMouseUp={onMouseUp} onMouseMove={onMouseMove}>
+        <div 
+          className="x-drag-item" 
+          style={style} 
+          onMouseDown={(e) => onMouseDown('move', e)} 
+          onMouseUp={onMouseUp} 
+          onMouseMove={onMouseMove} 
+          onTouchStart={(e) => onTouchStart('move', e)}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onMouseUp}
+        >
           <div className="x-drag-item-child">{ children }</div>
           {
-            !isStatic && points.map(item => <div className={classnames('control-point', `point-${item}`)} key={item} onMouseDown={(e:React.MouseEvent<HTMLElement>) => onMouseDown(item as PosMap, e)}></div>)
+            !isStatic && 
+              points.map(item => 
+                <div 
+                  className={classnames('control-point', `point-${item}`)} 
+                  key={item} 
+                  onMouseDown={(e:React.MouseEvent<HTMLElement>) => onMouseDown(item as PosMap, e)}
+                  onTouchStart={(e:React.TouchEvent<HTMLElement>) => onTouchStart(item as PosMap, e)}
+                  >
+
+                </div>
+              )
           }
         </div>
     }
